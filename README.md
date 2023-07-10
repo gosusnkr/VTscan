@@ -24,17 +24,15 @@ usage: vtscan.py [-h] [-d] [-i] [-u] [-f] [-s INPUT] [-l FILE_PATH] [-o {json,cs
 VirusTotal Scan
 
 options:
-  -h, --help            show this help message and exit
-  -d, --domain          Scan a domain
-  -i, --ip              Scan an IP address
-  -u, --url             Scan a URL
-  -f, --file            Scan a file hash
-  -s INPUT, --single INPUT
-                        Scan a single input
-  -l FILE_PATH, --list FILE_PATH
-                        Scan a list of inputs from a file
-  -o {json,csv}, --output {json,csv}
-                        Generate a report in JSON or CSV format
+  -h, --help                           show this help message and exit
+  -d, --domain                         Scan a domain
+  -i, --ip                             Scan an IP address
+  -u, --url                            Scan a URL
+  -f, --file                           Scan a file hash
+  -s INPUT, --single INPUT             Scan a single input                                       
+  -l FILE_PATH, --list FILE_PATH       Scan a list of inputs from a file
+  -t DELAY, --delay DELAY              Time delay in seconds between each scan, the default value is 0, meaning no delay.                                                       
+  -o {json,csv}, --output {json,csv}   Generate a report in JSON or CSV format                                    
 
 Example Scan Commands:
   python vtscan.py -d -s google.com                                                        # Single domain scan
@@ -45,6 +43,7 @@ Example Scan Commands:
   python vtscan.py -i -l test.txt                                                          # List of IPs scan
   python vtscan.py -u -l test.txt                                                          # List of URLs scan
   python vtscan.py -f -l test.txt                                                          # List of file hashes scan
+  python vtscan.py -f -l test.txt -t 30                                                    # List of file hashes scan with 30 seconds time delay between each scan
   python vtscan.py -f -l test.txt -o json                                                  # List of file hashes scan with JSON output
   python vtscan.py -f -l test.txt -o csv                                                   # List of file hashes scan with CSV output
 ```

@@ -95,18 +95,18 @@ parser = argparse.ArgumentParser(description='VirusTotal Scan')
 
 # Define example scan commands for help section
 example_commands = '''Example Scan Commands:
-  python vtscan.py -d -s google.com                                                        # Single domain scan
-  python vtscan.py -i -s 171.25.0.45                                                       # Single IP scan
-  python vtscan.py -u -s www.google.com/search                                             # Single URL scan
-  python vtscan.py -f -s 543991ca8d1c65113dff039b85ae3f9a87f503daec30f46929fd454bc57e5a91  # Single file hash scan
-  python vtscan.py -d -l test.txt                                                          # List of domains scan
-  python vtscan.py -i -l test.txt                                                          # List of IPs scan
-  python vtscan.py -u -l test.txt                                                          # List of URLs scan
-  python vtscan.py -f -l test.txt                                                          # List of file hashes scan
-  python vtscan.py -f -l test.txt -o json                                                  # List of file hashes scan with JSON output
-  python vtscan.py -f -l test.txt -o csv                                                   # List of file hashes scan with CSV output
+  python vttest.py -d -s google.com        # Single domain scan
+  python vttest.py -i -s 171.25.0.45       # Single IP scan
+  python vttest.py -u -s google.com/search # Single URL scan
+  python vttest.py -f -s 543991ca8d1c65113dff039b85ae3f9a87f503daec30f46929fd454bc57e5a91 \\
+                                           # Single file hash scan
+  python vttest.py -d -l test.txt           # List of domains scan
+  python vttest.py -i -l test.txt           # List of IPs scan
+  python vttest.py -u -l test.txt           # List of URLs scan
+  python vttest.py -f -l test.txt           # List of file hashes scan
+  python vttest.py -f -l test.txt -o json   # List of file hashes scan with JSON output
+  python vttest.py -f -l test.txt -o csv    # List of file hashes scan with CSV output
 '''
-
 parser.epilog = example_commands  # Add example commands to the help section
 parser.formatter_class = argparse.RawDescriptionHelpFormatter  # Preserve line breaks in help message
 

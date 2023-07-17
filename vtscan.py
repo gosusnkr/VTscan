@@ -22,7 +22,7 @@ CA_CERT_PATH = r'D:\My ALDAR Documents\sgosu\Documents\cacert.pem'  # Update wit
 
 def scan(input_type, value, delay):
     # Provide your VirusTotal API key
-    api_key = '8699ba10ae9686d602e9f945cf9687b64a28208b50de9f1e78970c31645034bb'
+    api_key = 'PASTE YOUR API KEY HERE'
 
     # Set the appropriate API endpoint based on the input type
     if input_type == 'domain':
@@ -71,7 +71,7 @@ def scan(input_type, value, delay):
 
 def scan_url(url, input_type, delay):
     # Provide your VirusTotal API key
-    api_key = '8699ba10ae9686d602e9f945cf9687b64a28208b50de9f1e78970c31645034bb'
+    api_key = 'PASTE YOUR API KEY HERE'
 
     # Set the request headers with the API key
     headers = {
@@ -116,6 +116,10 @@ def scan_list(file_path, output_file=None, delay=0):
             input_type = determine_input_type(value)
             if input_type:
                 result = scan(input_type, value, delay)
+                if result is None:
+                    print(f"No result found for input: {value}")
+                    continue
+
                 result['Overall Status'] = determine_overall_status(result)  # Add 'Overall Status' to the result dictionary
 
                 results.append(result)
@@ -164,6 +168,9 @@ def determine_input_type(value):
     domain_pattern = r'^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
     ip_pattern = r'^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$'
     url_pattern = r'^(https?://)?[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/?'
+    md5_pattern = r'^[a-fA-F0-9]{32}$'
+    sha1_pattern = r'^[a-fA-F0-9]{40}$'
+    sha256_pattern = r'^[a-fA-F0-9]{64}$'
 
     if re.match(domain_pattern, value):
         return 'domain'
@@ -171,8 +178,14 @@ def determine_input_type(value):
         return 'ip'
     elif re.match(url_pattern, value):
         return 'url'
-    else:
+    elif re.match(md5_pattern, value):
         return 'hash'
+    elif re.match(sha1_pattern, value):
+        return 'hash'
+    elif re.match(sha256_pattern, value):
+        return 'hash'
+    else:
+        return None
 
 def print_result(result):
     if result:

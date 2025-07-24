@@ -4,14 +4,14 @@ To check whether a list of IOC (Indicators of Compromise) is already included in
 Before running the script, there are a few prerequisites that you need to have in place:
 
 1. Python: Make sure you have Python installed on your machine. You can download and install Python from the official Python website (https://www.python.org) based on your operating system.
-2. VirusTotal API Key: Obtain an API key from VirusTotal. You can sign up for a free account at the VirusTotal website (https://www.virustotal.com) and obtain your API key from the API section of your account settings. Replace `<PASTE YOUR API KEY HERE>` in the script with your actual API key. You need to replace the API KEY two places.
+2. VirusTotal API Key: Obtain an API key from VirusTotal. You can sign up for a free account at the VirusTotal website (https://www.virustotal.com) and obtain your API key from the API section of your account settings. Create a file with name ".vt.toml" and then add apikey="VIRUS_TOTAL_API_KEY_HERE"
 3. Do the below
 ```
    git clone https://github.com/gosusnkr/VTscan.git
    cd VTscan
    pip install -r requirements.txt
 ```
-In case you get SSL related issue while installing dependencies, use the below command.
+If you get an SSL-related issue while installing dependencies, use the command below.
 ```
 pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org -r requirements.txt
 ```
